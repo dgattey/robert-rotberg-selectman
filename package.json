@@ -1,9 +1,9 @@
 {
-  "name": "angular-seed",
+  "name": "robert-rotberg-selectman",
   "private": true,
   "version": "0.0.0",
-  "description": "A starter project for AngularJS",
-  "repository": "https://github.com/angular/angular-seed",
+  "description": "A website for Robert I. Rotberg for Selectman",
+  "repository": "https://github.com/dylangattey/robert-rotberg-selectman",
   "license": "MIT",
   "devDependencies": {
     "karma": "~0.10",
