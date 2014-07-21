@@ -4,10 +4,28 @@
  */
 
 @import url(http://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700);
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:700);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
 
 body {
   background-color: #F3F3F3;
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+}
+
+.pad-top {
+  padding-top: 2em;
+}
+
+a {
+  transition: color 0.3s;
+  -webkit-transition: color 0.3s;
+  -moz-transition: color 0.3s;
+  -o-transition: color 0.3s;
+  color: #34A8BE;
+}
+
+a:hover {
+  color: #147D90;
+  text-decoration: none;
 }
 
 .nav, .pagination, .carousel, .panel-title a {
@@ -15,10 +33,13 @@ body {
 }
 
 .intro-header {
+  padding: 45px;
+}
+
+.pattern-bg {
   background-color: #0693B6;
   color: white;
-  padding: 45px;
-  background-image: url('/app/img/shattered.png');
+  background-image: url('../img/shattered.png');
 }
 
 .intro-message h1 {
@@ -29,14 +50,12 @@ body {
 }
 
 .intro-message h3 {
-  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
   font-weight: 700;
   font-size: 1.8em;
 }
 
 .content {
   color: #666;
-  display: block;
   line-height: 39px;
   margin-bottom: 30px;
   margin-top: 0px;
@@ -44,19 +63,40 @@ body {
   padding-top: 60px;
 }
 
+.content div {
+  font-family: 'Roboto Slab', 'Museo', serif;
+  font-weight: 300;
+  line-height: 1.8em;
+  font-size: 18px;
+}
+
 .content .leader {
   font-family: 'Roboto Slab', 'Museo', serif;
   font-weight: 300;
-  font-size: 26px;
+  line-height: 1.8em;
+  font-size: 24px;
   padding-bottom: 15px;
+}
+
+.call-to-action {
+  padding: 2em;
+  font-size: 2em;
+  font-weight: 700;
 }
 
 footer {
   color: #aaa;
-  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
   font-weight: 700;
   padding-bottom: 20px;
   padding-top: 20px;
+}
+
+footer .copyright {
+  float: left;
+}
+
+footer .copyright.right {
+  float: right;
 }
 
 @media (max-width: 560px) {
