@@ -84,6 +84,11 @@ a:hover {
   font-weight: 700;
 }
 
+.call-to-action timer {
+  font-size: 0.6em;
+  font-weight: 400;
+}
+
 footer {
   color: #aaa;
   font-weight: 700;
