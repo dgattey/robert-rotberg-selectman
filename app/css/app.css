@@ -9,6 +9,7 @@
 body {
   background-color: #F3F3F3;
   font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  font-size: 150%;
 }
 
 .pad-top {
@@ -63,28 +64,57 @@ a:hover {
   padding-top: 60px;
 }
 
-.content div {
+.content div, .content p {
   font-family: 'Roboto Slab', 'Museo', serif;
   font-weight: 300;
   line-height: 1.8em;
-  font-size: 18px;
+  font-size: 1.06em;
 }
 
 .content .leader {
   font-family: 'Roboto Slab', 'Museo', serif;
   font-weight: 300;
   line-height: 1.8em;
-  font-size: 24px;
+  font-size: 1.6em;
   padding-bottom: 15px;
 }
 
-.call-to-action {
+.sidebar {
+  margin-top: 15px;
+  padding: 0;
+  border-left: 6px solid #0693B6;
+}
+
+.sidebar h2 {
+  margin: 0;
+  padding: 10px;
+  background-color: #0693B6;
+  color: white;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.sidebar ul li {
+  padding-left: 10px;
+  padding-top: 5px;
+  padding-bottom: 10px;
+}
+
+.sidebar ul li:nth-child(odd) {
+  background-color: #E1EFF5;
+}
+
+.dark-well {
   padding: 2em;
   font-size: 2em;
   font-weight: 700;
 }
 
-.call-to-action timer {
+.dark-well timer {
   font-size: 0.6em;
   font-weight: 400;
 }
@@ -104,20 +134,28 @@ footer .copyright.right {
   float: right;
 }
 
-@media (max-width: 560px) {
-  .intro-message h1 {
-    font-size: 3em;
+@media (max-width: 800px) {
+  .intro-header {
+    padding-left: 15px;
+    padding-right: 15px;
   }
-  .intro-message h3 {
-    font-size: 1.4em;
+  body {
+    font-size: 120%;
+  }
+  content {
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+}
+
+@media (max-width: 560px) {
+  body {
+    font-size: 100%;
   }
 }
 
 @media (max-width: 440px) {
-  .intro-message h1 {
-    font-size: 2.5em;
-  }
-  .intro-message h3 {
-    font-size: 1em;
+  body {
+    font-size: 90%;
   }
 }
