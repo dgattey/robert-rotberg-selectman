@@ -39,12 +39,26 @@
       </div>
       <div class="col-md-8">
         <h2>A Strong Leader</h2>
-        <p>Deb Mauger was a strong and able chair of the Board of Selectman. To succeed her, we need someone to strengthen many of our excellent policies, maintain the high quality of our schools and our services, spend more money on roads and other infrastructural needs, make sure that all of our town citizens are served equally well, closely examine and bolster our industrial and commercial base, continue our strict budget policies, and become more “green” and more environmentally sensitive. We will be tested severely by a number of costly capital needs – new schools, new police headquarters, and a new fire station. Given my experience and background, I can help make those tough choices, the better to keep Lexington excellent.</p>
+        <p>Deb Mauger was a strong and able chair of the Board of Selectman. To succeed her, we need someone to strengthen many of our excellent policies, maintain the high quality of our schools and our services, spend more money on roads and other infrastructural needs, make sure that all of our town citizens are served equally well, closely examine and bolster our industrial and commercial base, continue our strict budget policies, and become more “green” and more environmentally sensitive. We will be tested severely by a number of costly capital needs – new schools, new police headquarters, and a new fire station.</p>
+        <p>Given my experience and background, I can help make those tough choices, the better to keep Lexington excellent.</p>
 
       </div>
     </div>
+  </div>
 
-    <!-- Bio -->
+  <div class="dark-well bg-primary text-center" ng-controller="ButtonCtrl">
+    <div class="container button-holder">
+      <button ng-repeat="item in buttons" ng-click="setSelected(item)" type="button" class="btn btn-primary btn-xlg">
+        <span class="glyphicon glyphicon-{{item.icon}}"></span> {{item.title}}
+      </button>
+      <div ng-show="selected === item" ng-repeat="item in buttons">
+        {{item.content}}
+      </div>
+    </div>
+  </div>
+
+  <!-- Bio -->
+  <div class="content container">
     <div class="row pad-top">
       <div class="col-md-7">
         <h2>Background</h2>
