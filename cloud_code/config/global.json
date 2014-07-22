@@ -1,0 +1,14 @@
+{
+    "applications": {
+        "Robert Rotberg": {
+            "applicationId": "ho6HnNe3rRvhLvSVdZqizGy2BIXiPdCov4AIrKBL", 
+            "masterKey": "wSkbiugcgveNab77g6oW9EBW9ZCjx0CTEbgE6sfD"
+        }, 
+        "_default": {
+            "link": "Robert Rotberg"
+        }
+    }, 
+    "global": {
+        "parseVersion": "1.2.19"
+    }
+}

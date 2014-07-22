@@ -1,41 +1,47 @@
+var buttons = [
+  {
+    "title": "Donate",
+    "icon": "flash",
+    "url": "donate"
+  },
+  {
+    "title": "Endorse",
+    "icon": "certificate",
+    "url": "endorse"
+  },
+  {
+    "title": "Send Message",
+    "icon": "comment",
+    "url": "contact"
+  }
+];
+
 angular.module('rotbergApp', [
   // Built in
-  'ngRoute',
   'ui.bootstrap',
+  'ui.router',
 
   // Extras
-  'parse-angular',
   'timer'
-]).controller('ButtonCtrl', ['$scope', function ($scope) {
+]).config(function ($stateProvider, $urlRouterProvider) {
 
-  Parse.initialize("ho6HnNe3rRvhLvSVdZqizGy2BIXiPdCov4AIrKBL", "89LDCNDNImDFnKDZBL8C9mr0HB641SXMzeLExIru");
-
-  $scope.setSelected = function(item) {
-    if ($scope.selected === item) $scope.selected = undefined;
-    else $scope.selected = item;
-
-    // Cloud Code is patched too!
-    Parse.Cloud.run("testMeH", function(results) {
-        console.log(results);
-    });
+  // Setting up Parse
+  if (Parse){
+     Parse.initialize("ho6HnNe3rRvhLvSVdZqizGy2BIXiPdCov4AIrKBL", "89LDCNDNImDFnKDZBL8C9mr0HB641SXMzeLExIru");
   }
 
-  $scope.buttons = [
-    {
-      "title": "Donate",
-      "icon": "flash",
-      "content": "donate"
-    },
-    {
-      "title": "Endorse",
-      "icon": "certificate",
-      "content": "endorse"
-    },
-    {
-      "title": "Send Message",
-      "icon": "comment",
-      "content": "showContactForm"
-    }
-  ];
+  $urlRouterProvider.otherwise('/');
+  for (var i = 0; i < buttons.length; i++) {
+    var view = buttons[i];
+    $stateProvider
+      .state(view.url, {
+        url: '/'+view.url,
+        templateUrl: 'partials/'+view.url+'.html'
+      });
+  }
 
-}]);
+}).controller('ButtonCtrl', function ($scope) {
+
+  $scope.buttons = buttons;
+
+});

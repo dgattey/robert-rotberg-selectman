@@ -48,12 +48,14 @@
 
   <div class="dark-well bg-primary text-center" ng-controller="ButtonCtrl">
     <div class="container button-holder">
-      <button ng-repeat="item in buttons" ng-click="setSelected(item)" type="button" class="btn btn-primary btn-xlg">
+      <a ng-repeat="item in buttons"
+        ui-sref-active="active"
+        ui-sref="{{item.url}}"
+        type="button"
+        class="btn btn-primary btn-xlg">
         <span class="glyphicon glyphicon-{{item.icon}}"></span> {{item.title}}
-      </button>
-      <div ng-show="selected === item" ng-repeat="item in buttons">
-        {{item.content}}
-      </div>
+      </a>
+      <div ui-view></div>
     </div>
   </div>
 
@@ -97,11 +99,11 @@
   </footer>
 
   <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-route.min.js"></script>
+  <script src="http://angular-ui.github.io/ui-router/release/angular-ui-router.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.11.0/ui-bootstrap.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.11.0/ui-bootstrap-tpls.min.js"></script>
   <script src="js/app.js"></script>
-  <script src="js/parse-angular.js"></script>
+  <script src="http://www.parsecdn.com/js/parse-1.2.12.min.js"></script>
   <script src="js/timer.js"></script>
 </body>
 </html>
