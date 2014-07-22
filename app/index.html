@@ -46,8 +46,8 @@
     </div>
   </div>
 
-  <div class="dark-well bg-primary text-center" ng-controller="ButtonCtrl">
-    <div class="container button-holder">
+  <div class="bg-primary dark-well" ng-controller="ButtonCtrl">
+    <div class="container button-holder text-center">
       <a ng-repeat="item in buttons"
         ui-sref-active="active"
         ui-sref="{{item.url}}"
@@ -55,8 +55,8 @@
         class="btn btn-primary btn-xlg">
         <span class="glyphicon glyphicon-{{item.icon}}"></span> {{item.title}}
       </a>
-      <div ui-view></div>
     </div>
+    <div ui-view></div>
   </div>
 
   <!-- Bio -->
@@ -86,7 +86,7 @@
   <!-- /.content -->
 
   <!-- Call to Action -->
-  <div class="dark-well bg-primary text-center">
+  <div class="dark-well bg-primary text-center large">
     <div class="row">Vote Tuesday, November 4, 2014</div>
     <timer end-time="1415059200000">{{days}} days, {{hours}} hours, {{minutes}} minutes, {{seconds}} seconds</timer>
   </div>

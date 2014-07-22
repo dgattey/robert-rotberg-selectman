@@ -1,1 +1,46 @@
-DONATE!!!
+<div class="container">
+  <p>Thank you for your interest in supporting my campaign. You make all of this possible. After entering your preferred amount, click Donate to pay via PayPal. Alternatively, you can donate by sending a check to the following address.</p>
+
+  <div class="col-md-3 small pad-top">
+    <address>
+      <strong>Robert Rotberg</strong><br>
+      14 Barberry Rd<br>
+      Lexington MA 02421<br>
+    </address>
+  </div>
+
+  <div class="col-md-9 pad-top">
+    <form
+      class="form-inline"
+      role="form"
+      name="donateForm"
+      action="https://www.paypal.com/cgi-bin/webscr"
+      method="post">
+
+      <input type="hidden" name="cmd" value="_xclick">
+      <input type="hidden" name="business" value="robert_rotberg@harvard.edu">
+      <input type="hidden" name="item_name" value="Donation to Robert I. Rotberg">
+      <input type="hidden" name="currency_code" value="USD">
+
+      <!-- User facing! -->
+      <div class="form-group">
+        <label for="amount" class="control-label">Amount ($)</label>
+        <input
+          type="number"
+          class="form-control"
+          ng-model="amount"
+          name="amount"
+          min="0"
+          required>
+        <p ng-show="!donateForm.$pristine && donateForm.amount.$error.required" class="help-block">Please enter a valid numerical amount.</p>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-offset-2">
+          <button type="submit" name="submit" id="submit" ng-disabled="donateForm.$invalid" class="btn btn-primary btn-xlg">Donate</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+
+</div>

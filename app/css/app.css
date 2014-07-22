@@ -22,6 +22,7 @@ body {
 .button-holder a {
   margin-left: 20px;
   margin-right: 20px;
+  margin-bottom: 20px;
 }
 
 .btn-xlg {
@@ -125,6 +126,15 @@ a:hover {
 
 .dark-well {
   padding: 2em;
+  font-size: 1.4em;
+}
+
+.dark-well .help-block {
+  color: #ddd;
+  font-size: 0.7em;
+}
+
+.dark-well.large {
   font-size: 2em;
   font-weight: 700;
 }

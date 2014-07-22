@@ -1,9 +1,9 @@
-var buttons = [
+var navigation = [
   {
     "title": "Donate",
     "icon": "flash",
     "url": "donate"
-  },
+  }/*,
   {
     "title": "Endorse",
     "icon": "certificate",
@@ -13,7 +13,7 @@ var buttons = [
     "title": "Send Message",
     "icon": "comment",
     "url": "contact"
-  }
+  }*/
 ];
 
 angular.module('rotbergApp', [
@@ -31,8 +31,8 @@ angular.module('rotbergApp', [
   }
 
   $urlRouterProvider.otherwise('/');
-  for (var i = 0; i < buttons.length; i++) {
-    var view = buttons[i];
+  for (var i = 0; i < navigation.length; i++) {
+    var view = navigation[i];
     $stateProvider
       .state(view.url, {
         url: '/'+view.url,
@@ -41,7 +41,7 @@ angular.module('rotbergApp', [
   }
 
 }).controller('ButtonCtrl', function ($scope) {
+  $scope.buttons = navigation;
 
-  $scope.buttons = buttons;
 
 });
