@@ -4,8 +4,22 @@ angular.module('rotbergApp', [
   'ui.bootstrap',
 
   // Extras
+  'parse-angular',
   'timer'
 ]).controller('ButtonCtrl', ['$scope', function ($scope) {
+
+  Parse.initialize("ho6HnNe3rRvhLvSVdZqizGy2BIXiPdCov4AIrKBL", "89LDCNDNImDFnKDZBL8C9mr0HB641SXMzeLExIru");
+
+  $scope.setSelected = function(item) {
+    if ($scope.selected === item) $scope.selected = undefined;
+    else $scope.selected = item;
+
+    // Cloud Code is patched too!
+    Parse.Cloud.run("testMeH", function(results) {
+        console.log(results);
+    });
+  }
+
   $scope.buttons = [
     {
       "title": "Donate",

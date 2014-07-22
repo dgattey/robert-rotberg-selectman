@@ -1,0 +1,22 @@
+{
+  "name": "robert-rotberg-selectman",
+  "version": "0.0.0",
+  "homepage": "https://github.com/dylangattey/robert-rotberg-selectman",
+  "authors": [
+    "Dylan Gattey <dylan_gattey@brown.edu>"
+  ],
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "parse-angular-patch": "*"
+  }
+}
