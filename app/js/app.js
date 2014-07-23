@@ -43,5 +43,4 @@ angular.module('rotbergApp', [
 }).controller('ButtonCtrl', function ($scope) {
   $scope.buttons = navigation;
 
-
 });

@@ -19,17 +19,9 @@ body {
   padding-bottom: 2em;
 }
 
-.button-holder a {
-  margin-left: 20px;
-  margin-right: 20px;
-  margin-bottom: 20px;
-}
-
-.btn-xlg {
-  padding: 14px 28px;
-  font-size: 0.75em;
-  border-color: white;
-  border-width: 2px;
+.btn-group-xlg a, .btn-group-xlg button {
+  font-size: 0.9em;
+  padding: 10px 22px;
 }
 
 a {
@@ -165,7 +157,7 @@ footer .copyright.right {
     padding-right: 15px;
   }
   body {
-    font-size: 120%;
+    font-size: 130%;
   }
   content {
     margin-left: 15px;
@@ -175,12 +167,12 @@ footer .copyright.right {
 
 @media (max-width: 560px) {
   body {
-    font-size: 100%;
+    font-size: 110%;
   }
 }
 
 @media (max-width: 440px) {
   body {
-    font-size: 90%;
+    font-size: 100%;
   }
 }
