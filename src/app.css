@@ -48,7 +48,7 @@ a:hover {
 .pattern-bg {
   background-color: #0693B6;
   color: white;
-  background-image: url('../img/shattered.png');
+  background-image: url('assets/images/shattered.png');
 }
 
 .intro-message h1 {

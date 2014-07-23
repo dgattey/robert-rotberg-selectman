@@ -3,15 +3,5 @@
   "private": true,
   "version": "0.0.0",
   "description": "A website for Robert I. Rotberg for Selectman",
-  "repository": "https://github.com/dylangattey/robert-rotberg-selectman",
-  "devDependencies": {
-    "http-server": "^0.6.1"
-  },
-  "scripts": {
-    "prestart": "npm install",
-    "start": "http-server -a localhost -p 8000"
-  },
-  "dependencies": {
-    "bower": "^1.3.8"
-  }
+  "repository": "https://github.com/dylangattey/robert-rotberg-selectman"
 }
