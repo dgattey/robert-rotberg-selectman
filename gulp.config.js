@@ -10,6 +10,6 @@ module.exports = {
     sass: 'src/**/app.scss'
   },
 
-  dest: 'build',
+  dest: 'build'
 
 };

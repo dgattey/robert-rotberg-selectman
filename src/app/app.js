@@ -8,7 +8,7 @@ angular.module('rotbergApp', [
   'ui.router',
   'app.views',
   'app.vendor'
-]).config(function ($stateProvider, $urlRouterProvider) {
+]).config(['Parse', '$stateProvider', '$urlRouterProvider'], function (Parse, $stateProvider, $urlRouterProvider) {
 
   // Setting up Parse
   if (Parse){
@@ -30,6 +30,6 @@ angular.module('rotbergApp', [
       });
   }
 
-}).controller('ButtonCtrl', function ($scope) {
+}).controller('ButtonCtrl', ['$scope', function ($scope) {
   $scope.buttons = navigation;
-});
+}]);
