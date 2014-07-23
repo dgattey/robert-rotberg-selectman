@@ -1,4 +1,4 @@
-<div class="container pad-top">
+<div class="container pad-top" ng-controller="ContactCtrl">
   <p>Questions? Comments? Feel like talking? Just send me a message through the form below and I'll get back to you as soon as possible. I appreciate hearing your thoughts.</p>
 
   <form ng-hide="showConfirmation" class="form-horizontal pad-top" name="cForm">
@@ -53,7 +53,10 @@
       <div class="form-group">
         <label class="col-md-2 col-sm-2 control-label" for="submitButton"></label>
         <div class="col-md-9 col-sm-10">
-          <button id="submitButton" name="submitButton" type="submit" ng-disabled="cForm.$invalid" class="btn btn-info btn-lg" ng-click="showConfirmation=true;">Send Message</button>
+          <button id="submitButton" name="submitButton" type="submit" ng-disabled="cForm.$invalid" class="btn btn-info btn-lg" ng-click="submitMessage(cForm)">Send Message</button>
+          <p ng-show="showGenericError" class="help-block">
+            Your message couldn't be submitted because you haven't filled out the required fields
+          </p>
         </div>
       </div>
 
@@ -62,7 +65,7 @@
 
   <!-- Confirmation message -->
   <div ng-show="showConfirmation" class="container">
-    <p class="confirmation">Thanks for your message {{name}}! We'll be in touch shortly.</p>
+    <p class="confirmation">Thanks for your message {{firstName}}! We'll be in touch shortly.</p>
   </div>
 
 </div>
