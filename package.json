@@ -3,5 +3,16 @@
   "private": true,
   "version": "0.0.0",
   "description": "A website for Robert I. Rotberg for Selectman",
-  "repository": "https://github.com/dylangattey/robert-rotberg-selectman"
+  "repository": "https://github.com/dylangattey/robert-rotberg-selectman",
+  "devDependencies": {
+    "gulp": "^3.8.6",
+    "gulp-concat": "^2.3.4",
+    "gulp-jshint": "^1.7.1",
+    "gulp-minify-css": "^0.3.7",
+    "gulp-rename": "^1.2.0",
+    "gulp-sass": "^0.7.2",
+    "gulp-uglify": "^0.3.1",
+    "jshint-stylish": "^0.4.0",
+    "rimraf": "^2.2.8"
+  }
 }
