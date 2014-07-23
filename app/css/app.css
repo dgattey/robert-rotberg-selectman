@@ -63,6 +63,13 @@ a:hover {
   font-size: 1.8em;
 }
 
+.confirmation {
+  padding-top: 20px;
+  font-family: 'Roboto Slab';
+  font-weight: 100;
+  font-size: 2em;
+}
+
 .content {
   color: #666;
   line-height: 39px;
