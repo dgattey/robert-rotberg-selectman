@@ -6,6 +6,7 @@ var gulp        = require('gulp'),
     minifyCSS   = require('gulp-minify-css'),
     rename      = require('gulp-rename'),
     webserver   = require('gulp-webserver'),
+    browserify  = require('gulp-browserify'),
     stylish     = require('jshint-stylish'),
     rimraf      = require('rimraf'),
     cfg         = require('./gulp.config.js');
@@ -66,6 +67,17 @@ var jsFunc = function() {
         .pipe(uglify())
         .pipe(gulp.dest(cfg.dest));
 }
+var browserifyFunc = function() {
+  gulp.src(cfg.srcFiles.browserify)
+    .pipe(browserify({
+      insertGlobals : false
+    }))
+    .pipe(uglify())
+    .pipe(gulp.dest(cfg.dest));
+}
+
+gulp.task('browserify', browserifyFunc);
+gulp.task('browserify-clean', ['clean'], browserifyFunc);
 gulp.task('lint', lintFunc);
 gulp.task('lint-clean', ['clean'], lintFunc);
 gulp.task('js', ['lint'],  jsFunc);
@@ -82,6 +94,7 @@ gulp.task('watch', ['dist'], function() {
     gulp.watch(cfg.srcFiles.allJS, ['lint', 'js']);
     gulp.watch(cfg.srcFiles.sass, ['sass']);
     gulp.watch(cfg.srcFiles.assets, ['assets']);
+    gulp.watch(cfg.srcFiles.browserify, ['browserify']);
     gulp.watch(cfg.srcFiles.html, ['html']);
 });
 gulp.task('watch-fat', ['dev'], function() {
@@ -104,7 +117,7 @@ gulp.task('server', function() {
 gulp.task('clean', function(cb) {
     return rimraf(cfg.dest, cb);
 });
-gulp.task('dev', ['lint-clean', 'sass-clean-fat', 'assets-clean', 'html-clean', 'js-clean-fat']);
-gulp.task('dist', ['lint-clean', 'sass-clean', 'assets-clean', 'html-clean', 'js-clean']);
+gulp.task('dev', ['lint-clean', 'sass-clean-fat', 'assets-clean', 'html-clean', 'browserify-clean', 'js-clean-fat']);
+gulp.task('dist', ['lint-clean', 'sass-clean', 'assets-clean', 'html-clean', 'browserify-clean', 'js-clean']);
 gulp.task('fat', ['clean', 'dev', 'watch-fat', 'server']);
 gulp.task('default', ['clean', 'dist', 'watch', 'server']);

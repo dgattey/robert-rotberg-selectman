@@ -7,7 +7,8 @@ module.exports = {
     allJS: ['src/**/*.js'],
     assets: ['src/assets/**/*.*'],
     html: ['src/**/*.html'],
-    sass: 'src/**/app.scss'
+    sass: 'src/**/app.scss',
+    browserify: 'browserify_scripts/**.js'
   },
 
   dest: 'build'
