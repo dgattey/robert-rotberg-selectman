@@ -7,6 +7,7 @@ module.exports = {
     allJS: ['src/**/*.js'],
     assets: ['src/assets/**/*.*'],
     html: ['src/**/*.html'],
+    php: ['src/**/*.php'],
     sass: 'src/**/app.scss'
   },
 
