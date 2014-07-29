@@ -1,4 +1,4 @@
-angular.module('app.views.contact', [])
+angular.module('app.views.endorse', [])
   .controller('EndorseCtrl', ['$scope', '$http', function ($scope, $http) {
     $scope.submitMessage = 'Endorse Robert I. Rotberg';
 
