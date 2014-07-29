@@ -38,12 +38,18 @@ var htmlFunc = function(){
     return gulp.src(cfg.srcFiles.html)
         .pipe(gulp.dest(cfg.dest));
 };
+var phpFunc = function(){
+    return gulp.src(cfg.srcFiles.php)
+        .pipe(gulp.dest(cfg.dest));
+};
 var assetsFunc = function(){
     return gulp.src(cfg.srcFiles.assets)
         .pipe(gulp.dest(cfg.dest+'/assets/'));
 };
 gulp.task('html', htmlFunc);
 gulp.task('html-clean', ['clean'], htmlFunc);
+gulp.task('php', phpFunc);
+gulp.task('php-clean', ['clean'], phpFunc);
 gulp.task('assets', assetsFunc);
 gulp.task('assets-clean', ['clean'], assetsFunc);
 
@@ -84,12 +90,14 @@ gulp.task('watch', ['dist'], function() {
     gulp.watch(cfg.srcFiles.sass, ['sass']);
     gulp.watch(cfg.srcFiles.assets, ['assets']);
     gulp.watch(cfg.srcFiles.html, ['html']);
+    gulp.watch(cfg.srcFiles.php, ['php']);
 });
 gulp.task('watch-fat', ['dev'], function() {
     gulp.watch(cfg.srcFiles.allJS, ['lint', 'js-fat']);
     gulp.watch(cfg.srcFiles.sass, ['sass-fat']);
     gulp.watch(cfg.srcFiles.assets, ['assets']);
     gulp.watch(cfg.srcFiles.html, ['html']);
+    gulp.watch(cfg.srcFiles.php, ['php']);
 });
 gulp.task('server', function() {
     gulp.src(cfg.dest)
@@ -105,7 +113,7 @@ gulp.task('server', function() {
 gulp.task('clean', function(cb) {
     return rimraf(cfg.dest, cb);
 });
-gulp.task('dev', ['lint-clean', 'sass-clean-fat', 'assets-clean', 'html-clean', 'js-clean-fat']);
-gulp.task('dist', ['lint-clean', 'sass-clean', 'assets-clean', 'html-clean', 'js-clean']);
+gulp.task('dev', ['lint-clean', 'sass-clean-fat', 'assets-clean', 'html-clean', 'php-clean', 'js-clean-fat']);
+gulp.task('dist', ['lint-clean', 'sass-clean', 'assets-clean', 'html-clean', 'php-clean', 'js-clean']);
 gulp.task('fat', ['clean', 'dev', 'watch-fat', 'server']);
 gulp.task('default', ['clean', 'dist', 'watch', 'server']);

@@ -8,7 +8,7 @@
       <div class="form-group">
         <label class="col-md-2 col-sm-2 control-label" for="name">Name*</label>
         <div class="col-md-9 col-sm-10">
-          <input id="name" name="name" ng-model="name" type="text" placeholder="John Q. Public" class="form-control input-lg" required>
+          <input id="name" name="name" ng-model="name" type="text" placeholder="John Q. Public" class="form-control input-lg" required ng-focus="clearError()">
           <p ng-show="!cForm.name.$pristine && cForm.name.$error.required" class="help-block">
             Please enter your name.
           </p>
@@ -20,7 +20,7 @@
       <div class="form-group">
         <label class="col-md-2 col-sm-2 control-label" for="email">Email*</label>
         <div class="col-md-9 col-sm-10">
-          <input id="email" name="email" ng-model="email" type="email" placeholder="me@example.com" class="form-control input-lg" required>
+          <input id="email" name="email" ng-model="email" type="email" placeholder="me@example.com" class="form-control input-lg" required ng-focus="clearError()">
           <p ng-show="!cForm.email.$pristine && cForm.email.$error.required" class="help-block">
             Please enter your email.
           </p>
@@ -34,7 +34,7 @@
       <div class="form-group">
         <label class="col-md-2 col-sm-2 control-label" for="phone">Phone Number</label>
         <div class="col-md-9 col-sm-10">
-          <input id="phone" name="phone" type="phone" placeholder="(123) 456-7890" class="form-control input-lg">
+          <input id="phone" name="phone" type="phone" placeholder="(123) 456-7890" ng-model="phone" class="form-control input-lg" ng-focus="clearError()">
         </div>
       </div>
 
@@ -42,7 +42,7 @@
       <div class="form-group">
         <label class="col-md-2 col-sm-2 control-label" for="message">Message*</label>
         <div class="col-md-9 col-sm-10">
-          <textarea placeholder="Your message here" rows="6" class="form-control" id="message" name="message" ng-model="message" required></textarea>
+          <textarea placeholder="Your message here" rows="6" class="form-control" id="message" name="message" ng-model="message" required ng-focus="clearError()"></textarea>
           <p ng-show="!cForm.message.$pristine && cForm.message.$error.required" class="help-block">
             Please enter a message.
           </p>
@@ -53,9 +53,9 @@
       <div class="form-group">
         <label class="col-md-2 col-sm-2 control-label" for="submitButton"></label>
         <div class="col-md-9 col-sm-10">
-          <button id="submitButton" name="submitButton" type="submit" ng-disabled="cForm.$invalid" class="btn btn-info btn-lg" ng-click="submitMessage(cForm)">Send Message</button>
-          <p ng-show="showGenericError" class="help-block">
-            Your message couldn't be submitted because you haven't filled out the required fields
+          <button id="submitButton" name="submitButton" type="submit" ng-disabled="cForm.$invalid || submitDisabled" class="btn btn-info btn-lg" ng-click="send(cForm)">{{submitMessage}}</button>
+          <p ng-show="formError" class="help-block">
+            {{formError}}
           </p>
         </div>
       </div>
