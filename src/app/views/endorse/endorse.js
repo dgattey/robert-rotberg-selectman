@@ -1,6 +1,6 @@
-angular.module('app.views.contact', [])
-  .controller('ContactCtrl', ['$scope', '$http', function ($scope, $http) {
-    $scope.submitMessage = 'Send Message';
+angular.module('app.views.endorse', [])
+  .controller('EndorseCtrl', ['$scope', '$http', function ($scope, $http) {
+    $scope.submitMessage = 'Endorse Robert I. Rotberg';
 
     $scope.clearError = function() {
       $scope.failCount = 0;
@@ -15,12 +15,10 @@ angular.module('app.views.contact', [])
 
       //Send email message
       $scope.submitDisabled = true;
-      $scope.submitMessage = 'Sending Message ...';
+      $scope.submitMessage = 'Endorsing ...';
       $http.post('php/sendMail.php', {
         'name' : $scope.name || ' ',
-        'email' : $scope.email || ' ',
-        'phone' : $scope.phone || ' ',
-        'message' : $scope.message || ' '
+        'endorsement' : $scope.message || ' '
       }).
       success(function() {
         $scope.firstName = $scope.name.substr(0, $scope.name.indexOf(' '));
@@ -40,5 +38,4 @@ angular.module('app.views.contact', [])
         $scope.submitMessage = 'Try again';
       });
     };
-
   }]);

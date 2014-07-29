@@ -1,3 +1,45 @@
-<div class="container pad-top">
-  <p>I appreciate all the endorsements I get. Something else.</p>
+<div class="container pad-top-half" ng-controller="EndorseCtrl">
+  <p class="confirmation">Endorsements</p>
+  <p>Be the first online endorser!</p>
+  <form ng-hide="showConfirmation" class="form-horizontal pad-top" name="eForm">
+    <fieldset>
+
+      <!-- Name-->
+      <div class="form-group">
+        <label class="col-md-2 col-sm-2 control-label" for="name">Your Name*</label>
+        <div class="col-md-9 col-sm-10">
+          <input id="name" name="name" ng-model="name" type="text" placeholder="John Q. Public" class="form-control input-lg" required ng-focus="clearError()">
+          <p ng-show="!eForm.name.$pristine && eForm.name.$error.required" class="help-block">
+            Please enter your name.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Message -->
+      <div class="form-group">
+        <label class="col-md-2 col-sm-2 control-label" for="message">Note</label>
+        <div class="col-md-9 col-sm-10">
+          <textarea placeholder="Optional note here" rows="3" class="form-control" id="message" name="message" ng-model="message" ng-focus="clearError()"></textarea>
+        </div>
+      </div>
+
+      <!-- Submit -->
+      <div class="form-group">
+        <label class="col-md-2 col-sm-2 control-label" for="submitButton"></label>
+        <div class="col-md-9 col-sm-10">
+          <button id="submitButton" name="submitButton" type="submit" ng-disabled="eForm.$invalid || submitDisabled" class="btn btn-info btn-lg" ng-click="send(eForm)">{{submitMessage}}</button>
+          <p ng-show="formError" class="help-block">
+            {{formError}}
+          </p>
+        </div>
+      </div>
+
+    </fieldset>
+  </form>
+
+  <!-- Confirmation message -->
+  <div ng-show="showConfirmation" class="container">
+    <p class="confirmation">Thanks for your endorsement, {{firstName}}!</p>
+  </div>
 </div>

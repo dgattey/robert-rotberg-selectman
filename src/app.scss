@@ -15,6 +15,9 @@ body {
 .pad-top {
   padding-top: 2em;
 }
+.pad-top-half {
+  padding-top: 1em;
+}
 .pad-bottom {
   padding-bottom: 2em;
 }
@@ -52,6 +55,20 @@ a {
   background-image: url('assets/images/shattered.png');
 }
 
+blockquote {
+  border-color: #ccccee;
+  aside {
+    &::before {
+      content: '— ';
+    }
+
+    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+    float: right !important;
+    margin-top:12px;
+    font-size: 0.9em;
+  }
+}
+
 .intro-message {
   h1 {
     font-family: 'Roboto Slab', 'Museo', serif;
@@ -70,6 +87,12 @@ a {
   font-family: 'Roboto Slab';
   font-weight: 100;
   font-size: 2em;
+}
+
+.reg-header {
+  text-transform: uppercase;
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  font-weight: 700;
 }
 
 .content {
@@ -93,6 +116,10 @@ a {
     font-size: 1.6em;
     padding-bottom: 15px;
   }
+}
+
+ul.square {
+  list-style-type: square;
 }
 
 .sidebar {
