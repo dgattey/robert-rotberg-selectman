@@ -43,35 +43,44 @@ angular.module('app.views.contact', [])
       return angular.isObject(data) && String(data) !== '[object File]' ? param(data) : data;
     }];
 
-    $scope.submitMessage = function(form) {
+    $scope.submitMessage = 'Send Message';
+
+    $scope.clearError = function() {
+      $scope.failCount = 0;
+      $scope.formError = null;
+    };
+
+    $scope.send = function(form) {
       if (form.$invalid) {
-        $scope.showGenericError = true;
+        $scope.formError = 'Oops! Couldn\'t submit since all the fields are not filled';
         return;
       }
 
       //Send email message
-      $http.post('sendMail.php', {
-        'name' : $scope.name,
-        'email' : $scope.email,
-        'phone' : $scope.phone,
-        'message' : $scope.message
+      $scope.submitDisabled = true;
+      $scope.submitMessage = 'Sending Message ...';
+      $http.post('php/sendMail.php', {
+        'name' : $scope.name || ' ',
+        'email' : $scope.email || ' ',
+        'phone' : $scope.phone || ' ',
+        'message' : $scope.message || ' '
       }).
-      success(function(data, status, headers, config) {
-        console.log('Success!', data, status, config);
-
-        // Will update HTML
+      success(function() {
         $scope.firstName = $scope.name.substr(0, $scope.name.indexOf(' '));
         if ($scope.firstName === '') {
           $scope.firstName = $scope.name;
         }
         $scope.showConfirmation = true;
       }).
-      error(function(data, status, headers, config) {
-          console.log('ERROR!', data, status, headers, config);
-
-          // Just log errors for now
-          $scope.codeStatus = status || 'Request failed';
-          // console.log('Error sending mail: ' + $scope.codeStatus);
+      error(function(data, status) {
+        $scope.failCount = $scope.failCount + 1 || 1;
+        if ($scope.failCount >= 3) {
+          $scope.formError = 'Seems like there are some problems. Email us at info@robertrotberg.com if they persist.';
+        } else {
+          $scope.formError = 'Emailing form data failed with status '+status+' (' + data +')';
+        }
+        $scope.submitDisabled = false;
+        $scope.submitMessage = 'Try again';
       });
     };
 
