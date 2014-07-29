@@ -24,6 +24,18 @@ $message = $_POST['message']; // required
 if(!isset($name) || !isset($email_from) || !isset($message) || !isset($phone)) {
     died('One of the required fields was missing');
 }
+$email_exp = '/^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/';
+if(!preg_match($email_exp,$email_from)) {
+  died('Your email address does not appear to be valid');
+
+}
+$string_exp = "/^[A-Za-z .'-]+$/";
+if(!preg_match($string_exp,$name)) {
+  died('Your name does not appear to be valid');
+}
+if(strlen($message) < 2) {
+  died('Your message is invalid');
+}
 
 // Clean inputs
 $name = clean_string($name);
@@ -32,12 +44,20 @@ $email_subject = "Hello from ".$name."! (robertrotberg.com)";
 $phone = clean_string($phone);
 $message = clean_string($message);
 
-// Create message
-$email_message = "Hey there! You have a message from ".$name." through the contact form at http://robertrotberg.com.\n\n";
-$email_message .= "Name: ".$name."\n";
-$email_message .= "Email: ".$email_from."\n";
-$email_message .= "Phone: ".$phone."\n";
-$email_message .= "Comments: ".$message."\n";
+// HTML body
+$body = file_get_contents('../app/views/email-template/basic.html');
+$body = str_replace('$name', $name, $body);
+$body = str_replace('$phone', $phone, $body);
+$body = str_replace('$email', $email_from, $body);
+$body = str_replace('$message', $message, $body);
+$body = preg_replace('/\\\\/','', $body); // strip backslashes
+
+// Plaintext body
+$body_plain = "Hey there! You have a message from ".$name." through the contact form at http://robertrotberg.com.\n\n";
+$body_plain .= "Name: ".$name."\n";
+$body_plain .= "Email: ".$email_from."\n";
+$body_plain .= "Phone: ".$phone."\n";
+$body_plain .= "Comments: ".$message."\n";
 
 ///////////////////
 // PHP MAILER
@@ -64,8 +84,8 @@ $mailer->addReplyTo($email_from, $name);
 
 // Configuration of information
 $mailer->Subject = $email_subject;
-$mailer->Body    = 'This is the HTML message body <b>in bold!</b>';
-$mailer->AltBody = 'This is the body in plain text for non-HTML mail clients';
+$mailer->Body    = $body;
+$mailer->AltBody = $body_plain;
 
 if(!$mailer->send()) {
   header($_SERVER["SERVER_PROTOCOL"]." 500 Internal Error");
