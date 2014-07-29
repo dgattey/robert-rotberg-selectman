@@ -1,6 +1,6 @@
 var navigation = [
 {'title':'Donate','icon':'flash','url':'donate'},
-/*{'title':'Endorse','icon':'certificate','url':'endorse'},*/
+{'title':'Endorse','icon':'certificate','url':'endorse'},
 {'title':'Send Message','icon':'comment','url':'contact'}
 ];
 
