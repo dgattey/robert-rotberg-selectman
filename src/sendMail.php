@@ -26,12 +26,11 @@ if(isset($_POST['email'])) {
 
   $error_message = "";
 
-
-  $email_message = "Message from ".clean_string($name)."\n\n";
   function clean_string($string) {
     $bad = array("content-type","bcc:","to:","cc:","href");
     return str_replace($bad,"",$string);
   }
+  $email_message = "Message from ".clean_string($name)."\n\n";
   $email_message .= "Name: ".clean_string($name)."\n";
   $email_message .= "Email: ".clean_string($email_from)."\n";
   $email_message .= "Phone: ".clean_string($phone)."\n";
@@ -43,10 +42,13 @@ if(isset($_POST['email'])) {
   'X-Mailer: PHP/' . phpversion();
   @mail($email_to, $email_subject, $email_message, $headers);
 
+  header($_SERVER["SERVER_PROTOCOL"]." 200 Ok");
   echo "Success, thank you for contacting us. We will be in touch with you very soon.";
 
 } else {
-  http_response_code(404); echo "Error, couldn't get data: ".$name.", ".$email.", ".$phone.", ".$message;
+  header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found");
+  echo "Error, couldn't get data: ".$name.", ".$email.", ".$phone.", ".$message;
+  exit();
 }
 
 ?>
