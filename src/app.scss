@@ -195,22 +195,59 @@ footer {
     padding-right: 15px;
   }
   body {
-    font-size: 130%;
+    font-size: 140%;
   }
   content {
     margin-left: 15px;
     margin-right: 15px;
   }
+  .pad-small {
+    margin-top: 20px;
+  }
+  .sidebar {
+    margin-top: 50px;
+    ul {
+      margin-bottom: 35px;
+      border: none;
+    }
+  }
 }
 
 @media (max-width: 560px) {
   body {
-    font-size: 110%;
+    font-size: 130%;
+  }
+  .intro-message {
+    h1 {
+      font-size: 3.6em;
+    }
+    h3 {
+      font-size: 1.6em;
+    }
+  }
+  .btn {
+    display: block;
+    width: 100%;
+    border-radius: 0px;
   }
 }
 
 @media (max-width: 440px) {
   body {
-    font-size: 100%;
+    font-size: 120%;
+  }
+  .intro-message {
+    h1 {
+      font-size: 3.2em;
+    }
+    h3 {
+      font-size: 1.4em;
+    }
+  }
+  .content {
+    div, p, .leader {
+      font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+      font-weight: 400;
+    }
   }
 }
