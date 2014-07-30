@@ -22,6 +22,13 @@ body {
   padding-bottom: 2em;
 }
 
+.top-border {
+  border-top: 5px solid #ccccee;
+  display:inline-block;
+  padding-top: 20px;
+  margin-top: 0;
+}
+
 .btn-group-xlg {
   a, button {
     font-size: 0.9em;
