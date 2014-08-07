@@ -37,7 +37,7 @@ $string_exp = "/^[A-Za-z .'-]+$/";
 if(!preg_match($string_exp,$name)) {
   died('Your name does not appear to be valid');
 }
-if((isset($message) && strlen($message) < 2) || (isset($endorse) && strlen($endorse) < 2)) {
+if(!isset($endorse) && isset($message) && strlen($message) < 2) {
   died('Your message is invalid');
 }
 
@@ -46,7 +46,7 @@ $name = clean_string($name);
 if (isset($email_from)) {
   $email_from = clean_string($email_from);
 }
-$email_subject = "Hello from ".$name."! (robertrotberg.com)";
+$email_subject = "Message from robertrotberg.com";
 if (isset($phone)) {
   $phone = clean_string($phone);
 }
@@ -73,8 +73,9 @@ if (isset($message)) {
   $body_plain .= "Comments: ".$message."\n";
 } else if (isset($endorse)) {
   // Plaintext body
-  $body = "Hey there! You have a new endorsement from ".$name." through http://robertrotberg.com.\n\n";
-  $body .= "Their message: ".$endorse."\n";
+  $body = "Hey there! You have a new endorsement through http://robertrotberg.com.\n\n\n";
+  $body .= "From: ".$name."\n";
+  $body .= "Message: ".$endorse."\n";
 
   $body_plain = $body;
 }
