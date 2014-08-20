@@ -1,6 +1,7 @@
 angular.module('app.views.endorse', [])
   .controller('EndorseCtrl', ['$scope', function ($scope) {
     $scope.endorsements = [];
+    $scope.errorLoadingEndorsements = false;
     var EndorsementCollection = Parse.Collection.extend({
       model: Parse.Object.extend('Endorsement')
     });
@@ -16,7 +17,7 @@ angular.module('app.views.endorse', [])
       },
       error: function(collection, error) {
         console.warn('Could not retrieve endorsements because ' + error);
+        $scope.errorLoadingEndorsements = true;
       }
     });
-
   }]);
