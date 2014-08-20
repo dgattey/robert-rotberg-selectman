@@ -18,6 +18,14 @@ var navigation = [
   // Sets up routing and Parse
   .config(['$stateProvider', '$httpProvider', function ($stateProvider, $httpProvider) {
 
+    // Set up Parse
+    if (Parse){
+      Parse.initialize(
+        'ho6HnNe3rRvhLvSVdZqizGy2BIXiPdCov4AIrKBL', // API
+        '89LDCNDNImDFnKDZBL8C9mr0HB641SXMzeLExIru' // This app
+      );
+    }
+
     // Create routes
     for (var i = 0; i < navigation.length; i++) {
       var view = navigation[i];
