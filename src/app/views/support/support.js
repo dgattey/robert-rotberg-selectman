@@ -1,6 +1,6 @@
-angular.module('app.views.endorse', [])
-  .controller('EndorseCtrl', ['$scope', '$http', function ($scope, $http) {
-    $scope.submitMessage = 'Endorse Robert I. Rotberg';
+angular.module('app.views.support', [])
+  .controller('SupportCtrl', ['$scope', '$http', function ($scope, $http) {
+    $scope.submitMessage = 'Submit Endorsement';
 
     $scope.clearError = function() {
       $scope.failCount = 0;
@@ -29,7 +29,7 @@ angular.module('app.views.endorse', [])
       }).
       error(function(data, status) {
         $scope.failCount = $scope.failCount + 1 || 1;
-        if ($scope.failCount >= 3) {
+        if ($scope.failCount >= 2) {
           $scope.formError = 'Seems like there are some problems. Email us at info@robertrotberg.com if they persist.';
         } else {
           $scope.formError = 'Emailing form data failed with status '+status+' (' + data +')';

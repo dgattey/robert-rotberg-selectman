@@ -1,5 +1,5 @@
 var navigation = [
-{'title':'Endorse','icon':'certificate','url':'endorse'},
+  {title:'Support Bob',   icon:'flash',       url:'support'},
   {title:'Endorsements',  icon:'certificate', url:'endorsements'},
   {title:'Send Message',  icon:'comment',     url:'contact'}
 ];

@@ -1,0 +1,93 @@
+<div class="container pad-top-half" ng-controller="SupportCtrl">
+
+  <!-- Donation -->
+  <h1>Donate</h1>
+  <p>Campaigns are costly, even in Lexington. If you would like to send a check, please do so to the following address:</p>
+  <blockquote>Committee to Elect Robert Rotberg Selectman<br/>
+    Michael Bliss, Treasurer<br/>
+    13 Barberry Rd.<br/>
+    Lexington 02421
+  </blockquote>
+
+  <!-- Endorse -->
+  <h1>Endorse</h1>
+  <p>To announce your endorsement of Robert Rotberg, please fill out the following form. In addition, if you would be willing to have a sign on your lawn, and/or to wear a button and use a bumper sticker, let us know in your message below.</p>
+  <form ng-hide="showConfirmation" class="form-horizontal pad-top" name="eForm">
+    <fieldset>
+
+      <!-- Name-->
+      <div class="form-group">
+        <label class="col-md-2 col-sm-2 control-label" for="name">Legal Name*</label>
+        <div class="col-md-9 col-sm-10">
+          <input id="name" name="name" ng-model="name" type="text" placeholder="John Q. Public" class="form-control input-lg" required ng-focus="clearError()">
+          <p ng-show="!eForm.name.$pristine && eForm.name.$error.required" class="help-block">
+            Please enter your name.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Display Name -->
+      <div class="form-group">
+        <label class="col-md-2 col-sm-2 control-label" for="displayName">Display Name As*</label>
+        <div class="col-md-9 col-sm-10">
+          <label class="radio inline col-md-2 col-sm-3" for="displayNameAnon">
+            <input type="radio" name="displayName" id="displayNameAnon" value="anonymous">
+            Anonymous
+          </label>
+          <label class="radio inline col-md-3 col-sm-3" for="displayNameFirst">
+            <input type="radio" name="displayName" id="displayNameFirst" value="firstName">
+            {{name && name !== '' ? name.split(' ')[0] : '[First Name]';}}
+          </label>
+          <label class="radio inline col-md-7 col-sm-6" for="displayNameWhole">
+            <input type="radio" name="displayName" id="displayNameWhole" value="wholeName" checked="checked">
+            {{name && name !== '' ? name : '[Full Name]';}}
+          </label>
+        </div>
+      </div>
+
+      <!-- Public Employee -->
+      <div class="form-group">
+        <label class="col-md-2 col-sm-2 control-label" for="publicEmployee">Public Employee?*</label>
+        <div class="col-md-9 col-sm-10">
+          <label class="radio inline col-md-2 col-sm-2" for="publicEmployeeYes">
+            <input type="radio" name="publicEmployee" id="publicEmployeeYes" value="yes" checked="checked">
+            Yes
+          </label>
+          <label class="radio inline col-md-2 col-sm-2" for="publicEmployeeNo">
+            <input type="radio" name="publicEmployee" id="publicEmployeeNo" value="no" checked="checked">
+            No
+          </label>
+          <label class="help-block col-md-12 col-sm-12">
+            We're required to collect this information by the state of Massachusetts.
+          </label>
+        </div>
+      </div>
+
+      <!-- Message -->
+      <div class="form-group">
+        <label class="col-md-2 col-sm-2 control-label" for="message">Note</label>
+        <div class="col-md-9 col-sm-10">
+          <textarea placeholder="Optional note here" rows="3" class="form-control" id="message" name="message" ng-model="message" ng-focus="clearError()"></textarea>
+        </div>
+      </div>
+
+      <!-- Submit -->
+      <div class="form-group">
+        <label class="col-md-2 col-sm-2 control-label" for="submitButton"></label>
+        <div class="col-md-9 col-sm-10">
+          <button id="submitButton" name="submitButton" type="submit" ng-disabled="eForm.$invalid || submitDisabled" class="btn btn-info btn-lg" ng-click="send(eForm)">{{submitMessage}}</button>
+          <p ng-show="formError" class="help-block">
+            {{formError}}
+          </p>
+        </div>
+      </div>
+
+    </fieldset>
+  </form>
+
+  <!-- Confirmation message -->
+  <div ng-show="showConfirmation" class="container">
+    <h1 class="confirmation">Thanks for your endorsement, {{name && name !== '' ? name.split(' ')[0] : '[First Name]';}}!</h1>
+  </div>
+</div>
