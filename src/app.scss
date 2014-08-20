@@ -205,6 +205,20 @@ ul.square {
   blockquote {
     font-style: italic;
   }
+  ul.endorsements {
+    padding-left: 0;
+    -moz-column-count: 3;
+    -moz-column-gap: 20px;
+    -webkit-column-count: 3;
+    -webkit-column-gap: 20px;
+    column-count: 3;
+    column-gap: 20px;
+
+    li:before {
+      content: '• ';
+      display: inline;
+    }
+  }
 }
 
 footer {
@@ -268,6 +282,14 @@ footer {
     display: block;
     width: 100%;
     border-radius: 0px;
+  }
+  .dark-well ul.endorsements {
+    -moz-column-count: 2;
+    -moz-column-gap: 20px;
+    -webkit-column-count: 2;
+    -webkit-column-gap: 20px;
+    column-count: 2;
+    column-gap: 20px;
   }
 }
 

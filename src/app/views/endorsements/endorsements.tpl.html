@@ -1,0 +1,7 @@
+<div class="container pad-top-half" ng-controller="EndorseCtrl">
+  <h1>Current Endorsements</h1>
+  <p>A list of everyone who has pledged to endorse Bob. To submit your own endorsement, click the Support button above.</p>
+  <ul class="endorsements">
+    <li ng-repeat="item in endorsements | orderBy : 'name' ">{{item.name}}</li>
+  </ul>
+</div>
