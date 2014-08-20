@@ -1,7 +1,7 @@
 var navigation = [
-{'title':'Donate','icon':'flash','url':'donate'},
 {'title':'Endorse','icon':'certificate','url':'endorse'},
-{'title':'Send Message','icon':'comment','url':'contact'}
+  {title:'Endorsements',  icon:'certificate', url:'endorsements'},
+  {title:'Send Message',  icon:'comment',     url:'contact'}
 ];
 
 /**

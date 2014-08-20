@@ -36,6 +36,18 @@ body {
   }
 }
 
+.btn-turq:hover, .btn-turq:focus, .btn-turq:active, .btn-turq.active, .open>.dropdown-toggle.btn-turq {
+  background-color: #28B7C4;
+  border-color: #269EBC;
+  color: #ffffff
+}
+
+.btn-turq {
+  color: #ffffff;
+  background-color: #2DD1CB;
+  border-color: #46b8da;
+}
+
 a {
   &:hover {
     color: #147D90;
