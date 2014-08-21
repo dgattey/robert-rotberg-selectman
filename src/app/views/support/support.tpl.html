@@ -19,7 +19,7 @@
       <div class="form-group">
         <label class="col-md-2 col-sm-2 control-label" for="name">Legal Name*</label>
         <div class="col-md-9 col-sm-10">
-          <input id="name" name="name" ng-model="name" type="text" placeholder="John Q. Public" class="form-control input-lg" required ng-focus="clearError()">
+          <input id="name" name="name" ng-model="formData.name" type="text" placeholder="John Q. Public" class="form-control input-lg" required ng-focus="clearError()">
           <p ng-show="!eForm.name.$pristine && eForm.name.$error.required" class="help-block">
             Please enter your name.
           </p>
@@ -32,16 +32,19 @@
         <label class="col-md-2 col-sm-2 control-label" for="displayName">Display Name As*</label>
         <div class="col-md-9 col-sm-10">
           <label class="radio inline col-md-2 col-sm-3" for="displayNameAnon">
-            <input type="radio" name="displayName" id="displayNameAnon" value="anonymous">
+            <input type="radio" name="displayName" id="displayNameAnon" value="anonymous" ng-model="formData.displayName">
             Anonymous
           </label>
           <label class="radio inline col-md-3 col-sm-3" for="displayNameFirst">
-            <input type="radio" name="displayName" id="displayNameFirst" value="firstName">
-            {{name && name !== '' ? name.split(' ')[0] : '[First Name]';}}
+            <input type="radio" name="displayName" id="displayNameFirst" value="firstName" ng-model="formData.displayName">
+            {{formData.name && formData.name !== '' ? formData.name.split(' ')[0] : '[First Name]';}}
           </label>
           <label class="radio inline col-md-7 col-sm-6" for="displayNameWhole">
-            <input type="radio" name="displayName" id="displayNameWhole" value="wholeName" checked="checked">
-            {{name && name !== '' ? name : '[Full Name]';}}
+            <input type="radio" name="displayName" id="displayNameWhole" value="wholeName" ng-model="formData.displayName">
+            {{formData.name && formData.name !== '' ? formData.name : '[Full Name]';}}
+          </label>
+          <label class="help-block col-md-12 col-sm-12">
+            Your <span ng-show="formData.displayName === 'wholeName'">full name will</span><span ng-show="formData.displayName === 'firstName'">first name will</span><span ng-show="formData.displayName === 'anonymous'">name will not</span> be displayed under the endorsers tab above
           </label>
         </div>
       </div>
@@ -51,11 +54,11 @@
         <label class="col-md-2 col-sm-2 control-label" for="publicEmployee">Public Employee?*</label>
         <div class="col-md-9 col-sm-10">
           <label class="radio inline col-md-2 col-sm-2" for="publicEmployeeYes">
-            <input type="radio" name="publicEmployee" id="publicEmployeeYes" value="yes" checked="checked">
+            <input type="radio" name="publicEmployee" id="publicEmployeeYes" value="yes" ng-model="formData.publicEmployee">
             Yes
           </label>
           <label class="radio inline col-md-2 col-sm-2" for="publicEmployeeNo">
-            <input type="radio" name="publicEmployee" id="publicEmployeeNo" value="no" checked="checked">
+            <input type="radio" name="publicEmployee" id="publicEmployeeNo" value="no" ng-model="formData.publicEmployee">
             No
           </label>
           <label class="help-block col-md-12 col-sm-12">
@@ -68,7 +71,7 @@
       <div class="form-group">
         <label class="col-md-2 col-sm-2 control-label" for="message">Note</label>
         <div class="col-md-9 col-sm-10">
-          <textarea placeholder="Optional note here" rows="3" class="form-control" id="message" name="message" ng-model="message" ng-focus="clearError()"></textarea>
+          <textarea placeholder="Optional note here" rows="3" class="form-control" id="message" name="message" ng-model="formData.message" ng-focus="clearError()"></textarea>
         </div>
       </div>
 
