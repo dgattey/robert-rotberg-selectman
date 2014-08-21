@@ -18,7 +18,7 @@ function clean_string($string) {
 $name = $_POST['name'];
 $message = $_POST['message'];
 // Endorse only
-$display_name $_POST['displayName'];
+$display_name = $_POST['displayName'];
 // Contact only
 $email_from = $_POST['email'];
 $phone = $_POST['phone'];
@@ -68,11 +68,11 @@ if (!isset($display_name)) {
   $body_plain .= "Phone: ".$phone."\n";
   $body_plain .= "Comments: ".$message."\n";
 } else {
-  // Plaintext body
-  $body = "Hey there! You have a new endorsement through http://robertrotberg.com.\n\n";
-  $body .= "Full Name: ".$name."\n";
-  $body .= "Name should be displayed on website as: ".$display_name."\n";
-  $body .= "Optional comments: ".$message."\n";
+  // Endorsement!
+  $body = "<p>Hey there! You have a new endorsement through http://robertrotberg.com.</p><br/>";
+  $body .= "<p><strong>Full Name: </strong>".$name."</p>";
+  $body .= "<p><strong>Name should be displayed on website as: </strong>".$display_name."</p>";
+  $body .= "<p><strong>Optional comments: </strong>".$message."</p>";
 
   $body_plain = $body;
 }
