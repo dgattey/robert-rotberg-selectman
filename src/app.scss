@@ -213,10 +213,14 @@ ul.square {
     -webkit-column-gap: 20px;
     column-count: 3;
     column-gap: 20px;
+    list-style-type: none;
 
     li:before {
       content: '• ';
       display: inline;
+    }
+    li {
+      list-style-type: none;
     }
   }
 }
