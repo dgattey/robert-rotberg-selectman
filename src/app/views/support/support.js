@@ -27,7 +27,7 @@ angular.module('app.views.support', [])
       var postObj = {
         name: $scope.formData.name || ' ',
         displayName: 'Anonymous',
-        endorsement: $scope.formData.message || ' '
+        message: $scope.formData.message || ' '
       };
       if ($scope.formData.publicEmployee === 'no') {
         switch ($scope.formData.displayName) {
@@ -49,7 +49,7 @@ angular.module('app.views.support', [])
       $scope.submitMessage = 'Endorsing ...';
       $http.post('php/sendMail.php', postObj).
       success(function() {
-        $scope.formData.firstName = getFirstName($scope.formData.name);
+        $scope.firstName = getFirstName($scope.formData.name);
         $scope.showConfirmation = true;
       }).
       error(function(data, status) {
