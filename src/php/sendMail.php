@@ -100,7 +100,7 @@ if (!isset($email_from)) {
 }
 $mailer->From = $email_from;
 $mailer->FromName = $name;
-$mailer->addAddress('dylan.gattey@gmail.com', 'Webmaster');     // Add a recipient
+$mailer->addAddress('robert_rotberg@hks.harvard.edu', 'Robert Rotberg');     // Add a recipient
 $mailer->addReplyTo($email_from, $name);
 
 // Configuration of information
