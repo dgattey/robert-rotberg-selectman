@@ -8,31 +8,32 @@ app.use(parseExpressRawBody());
 
 app.post('/addEndorsement',
          function(req, res) {
+
   // Use Parse JavaScript SDK to create a new message and save it.
   var Endorsement = Parse.Object.extend("Endorsement");
-
-
-  // String manipulation to find the section we want
-  var fullBody = req.body.toString();
-  var start = fullBody.indexOf('Content-Disposition: form-data; name="stripped-text"');
-  var partial1 = fullBody.substring(start + 50, fullBody.length-1);
-  var partial2 = partial1.substring(partial1.indexOf('\n'), partial1.indexOf('--'));
-  console.log('partial2 is: '+ partial2);
+  var saveName = function() {
+    var endorsement = new Endorsement();
+    endorsement.save({ name: name }).then(function(endorsement) {
+      return true;
+    }, function(error) {
+      return false;
+    });
+  };
 
   // Get all names and add them separately
-  var names = partial2.split('\n');
+  var fullBody = req.body['stripped-text'] || req.body['body-plain'];
+  var names = fullBody.split('\n');
+  console.log('Names: ' + JSON.stringify(names));
   for (var i = names.length - 1; i >= 0; i--) {
     var name = names[i];
     if (!name || name === '' || name === ' ' || name === '\n') continue;
     name = name.trim();
-    console.log('name is: '+ name);
-    var endorsement = new Endorsement();
-    endorsement.save({ name: name }).then(function(endorsement) {
-      console.log('saved endorsement named \"' + endorsement.get('name') + '\"');
-    }, function(error) {
+    console.log('Creating endorsement with name: '+ name);
+    if (!saveName(name)) {
       res.status(500);
       res.send('Error');
-    });
+      return;
+    }
   }
   res.send('Success');
 });
