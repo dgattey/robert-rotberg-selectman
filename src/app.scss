@@ -213,10 +213,14 @@ ul.square {
     -webkit-column-gap: 20px;
     column-count: 3;
     column-gap: 20px;
+    list-style-type: none;
 
     li:before {
       content: '• ';
       display: inline;
+    }
+    li {
+      list-style-type: none;
     }
   }
 }
@@ -264,6 +268,11 @@ footer {
       border: none;
     }
   }
+  .btn {
+    display: block;
+    width: 100%;
+    border-radius: 0px;
+  }
 }
 
 @media (max-width: 560px) {
@@ -277,11 +286,6 @@ footer {
     h3 {
       font-size: 1.6em;
     }
-  }
-  .btn {
-    display: block;
-    width: 100%;
-    border-radius: 0px;
   }
   .dark-well ul.endorsements {
     -moz-column-count: 2;
