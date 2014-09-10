@@ -8,34 +8,52 @@ app.use(parseExpressRawBody());
 
 app.post('/addEndorsement',
          function(req, res) {
+  var Endorsement = Parse.Object.extend('Endorsement');
 
-  // Use Parse JavaScript SDK to create a new message and save it.
-  var Endorsement = Parse.Object.extend("Endorsement");
-  var saveName = function() {
-    var endorsement = new Endorsement();
-    endorsement.save({ name: name }).then(function(endorsement) {
-      return true;
-    }, function(error) {
-      return false;
-    });
-  };
-
-  // Get all names and add them separately
+  // Get all names from one body of text
   var fullBody = req.body['stripped-text'] || req.body['body-plain'];
   var names = fullBody.split('\n');
-  console.log('Names: ' + JSON.stringify(names));
-  for (var i = names.length - 1; i >= 0; i--) {
-    var name = names[i];
-    if (!name || name === '' || name === ' ' || name === '\n') continue;
-    name = name.trim();
-    console.log('Creating endorsement with name: '+ name);
-    if (!saveName(name)) {
-      res.status(500);
-      res.send('Error');
+
+  // Create name from first line
+  var name = names[0];
+  if (name === '' || name === ' ' || name === '\n') {
+    res.status(406);
+    res.send('Error: Bad data (name was empty)');
+    return;
+  };
+  name = name.trim();
+
+  // Check to see that this is unique (if not, just continue)
+  var query = new Parse.Query(Endorsement);
+  query.equalTo('name', name);
+  query.find({
+    success: function(results) {
+      if (results.length > 0) {
+        res.status(406);
+        res.send('Name already exists! Not doing anything');
+        return;
+      }
+
+      // Actually create the endorsement
+      console.log('Creating endorsement with name: '+ name);
+      var endorsement = new Endorsement();
+      endorsement.save({ name: name }).then(function(endorsement) {
+        console.log('Created endorsement: ' + name);
+        res.send('Success');
+        return;
+      }, function(error) {
+        res.status(406);
+        res.send(error.message);
+        return;
+      });
+    },
+    error: function(error) {
+      res.status(406);
+      res.send(error.message);
       return;
     }
-  }
-  res.send('Success');
+  });
+
 });
 
 app.listen();
